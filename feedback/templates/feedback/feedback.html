@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+  </head>
+  <body>
+    <h2>Оставьте отзыв</h2>
+    <form action="/" method="post">
+      {% csrf_token %}
+      <label for="name_id">Имя:</label>
+      <input type="text" id="name_id" name="name" />
+      <br />
+      <br />
+      <label for="name_id">Фамилия:</label>
+      <input type="text" id="surname_id" name="surname" />
+      <br />
+      <br />
+      <label for="feedback_id">Отзыв:</label>
+      <textarea name="feedback" id="feedback_id" cols="30" rows="5"></textarea>
+      <br />
+      <br />
+      <button>Отправить</button>
+    </form>
+  </body>
+</html>
