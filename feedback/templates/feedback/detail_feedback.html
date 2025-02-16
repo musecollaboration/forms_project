@@ -1,0 +1,11 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+  Одна запись из Feedback
+{% endblock %}
+
+{% block content %}
+  <h2>{{one_data.name}} {{one_data.surname}}</h2>
+  <h3>Отзыв: {{one_data.feedback}}</h3>
+  <h4>Рейтинг: {{one_data.rating}}</h4>
+{% endblock %}

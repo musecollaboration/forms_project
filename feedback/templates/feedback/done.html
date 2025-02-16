@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Title</title>
-  </head>
-  <body>
-    <h2>Ваш отзыв успешно обработан</h2>
-  </body>
-</html>
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+  Отзыв готов
+{% endblock %}
+
+{% block content %}
+  <h2>Ваш отзыв успешно обработан</h2>
+  <h2>{{ name }} Дата {{ date }}</h2>
+{% endblock %}

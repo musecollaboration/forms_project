@@ -1,0 +1,58 @@
+{% extends 'feedback/base.html' %}
+
+{% block title %}
+  Записи из Feedback
+{% endblock %}
+
+{% block content %}
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+    th,
+    td {
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+      text-align: center;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    caption {
+      caption-side: top;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+
+  <table>
+    <caption>Все записи из модели Feedback</caption>
+    <tr>
+      <th>id</th>
+      <th>name</th>
+      <th>surname</th>
+      <th>rating</th>
+      <th>feedback</th>
+    </tr>
+    {% comment %}object_list - значение по умолчанию{% endcomment %}
+    {% comment %}feedbacks - значение которое мы установили{% endcomment %}
+    {% for rec in feedbacks %}
+      <tr>
+        <td>{{ rec.id }}</td>
+        <td>{{ rec.name }}</td>
+        <td>{{ rec.surname }}</td>
+        <td>{{ rec.rating }}</td>
+        <td>{{ rec.feedback }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
