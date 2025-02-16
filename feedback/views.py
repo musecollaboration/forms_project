@@ -1,40 +1,24 @@
 from django.views.generic.base import TemplateView
-from django.shortcuts import render
-from django.http import HttpRequest, HttpResponseRedirect
 from .forms import FeedbackForms
 from .models import Feedback
 from django.views.generic import ListView, DetailView
-
-from django.views import View
-
-
-class FeedbackView(View):
-    def get(self, request: HttpRequest):
-        form = FeedbackForms()
-        return render(request, 'feedback/feedback.html', context={'form': form})
-
-    def post(self, request: HttpRequest):
-        form = FeedbackForms(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/done')
-        return render(request, 'feedback/feedback.html', context={'form': form})
+from django.views.generic.edit import CreateView, UpdateView
 
 
-class UpdateFeedbackView(View):
-    def get(self, request: HttpRequest, id_feedback=None):
-        feed = Feedback.objects.get(id=id_feedback)
-        form = FeedbackForms(instance=feed)
-        return render(request, 'feedback/feedback.html', context={'form': form})
+class FeedbackView(CreateView):
+    model = Feedback
+    form_class = FeedbackForms
+    # fields = '__all__'
+    template_name = 'feedback/feedback.html'
+    success_url = '/done'
 
-    def post(self, request: HttpRequest, id_feedback=None):
-        feed = Feedback.objects.get(id=id_feedback)
-        form = FeedbackForms(request.POST, instance=feed)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/done')
-        form = FeedbackForms(instance=feed)
-        return render(request, 'form_project/feedback.html', context={'form': form})
+
+class UpdateFeedbackView(UpdateView):
+    model = Feedback
+    form_class = FeedbackForms
+    # fields = '__all__'
+    template_name = 'feedback/feedback.html'
+    success_url = '/done'
 
 
 class DoneView(TemplateView):
