@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpRequest, HttpResponseRedirect
 from .forms import FeedbackForms
 from .models import Feedback
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from django.views import View
 
@@ -58,11 +58,7 @@ class ListFeedBack(ListView):
         return queryset
 
 
-class DetailFeedBack(TemplateView):
+class DetailFeedBack(DetailView):
     template_name = 'feedback/detail_feedback.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        id_feedback = int(kwargs['id_feedback'])
-        context['one_data'] = Feedback.objects.get(id=id_feedback)
-        return context
+    model = Feedback  # в html будет в нижнем регистре feedback или object
+    # context_object_name = 'feed'  # переопределение переменной

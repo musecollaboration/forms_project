@@ -1,11 +1,13 @@
 {% extends 'feedback/base.html' %}
 
 {% block title %}
-  Одна запись из Feedback
+  One feedback
 {% endblock %}
 
 {% block content %}
-  <h2>{{one_data.name}} {{one_data.surname}}</h2>
-  <h3>Отзыв: {{one_data.feedback}}</h3>
-  <h4>Рейтинг: {{one_data.rating}}</h4>
+  <h2>Информация об отзыве</h2>
+  <h3>Имя: {{ feedback.name }}</h3>
+  <h3>Фамилия: {{ object.surname }}</h3>
+  <h3>Отзыв: {{ feedback.feedback }}</h3>
+  <h4>Рейтинг: {{ object.rating }}</h4>
 {% endblock %}
